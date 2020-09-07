@@ -48,7 +48,8 @@ typedef pte_t *pte_addr_t;
  * ZERO_PAGE is a global shared page that is always zero: used
  * for zero-mapped memory areas etc..
  */
-#define ZERO_PAGE(vaddr)	(virt_to_page(0))
+extern struct page *empty_zero_page;
+#define ZERO_PAGE(vaddr)	(empty_zero_page)
 
 /*
  * Mark the prot value as uncacheable and unbufferable.
