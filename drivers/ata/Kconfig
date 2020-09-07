@@ -1035,6 +1035,12 @@ config PATA_GAYLE
 
 	  If unsure, say N.
 
+config PATA_GPIO
+	tristate "GPIO PATA bitbang support"
+	select PATA_TIMINGS
+	help
+	  This option enables support for bitbanged PATA.
+
 config PATA_BUDDHA
 	tristate "Buddha/Catweasel/X-Surf PATA support"
 	depends on ZORRO
