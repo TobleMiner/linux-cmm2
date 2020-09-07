@@ -659,8 +659,8 @@ static const struct st32h7_pll_cfg stm32h7_pll3 = {
 
 static const struct stm32_pll_data stm32_pll[] = {
 	{ "vco1", "pllsrc", CLK_IGNORE_UNUSED, &stm32h7_pll1 },
-	{ "vco2", "pllsrc", 0, &stm32h7_pll2 },
-	{ "vco3", "pllsrc", 0, &stm32h7_pll3 },
+	{ "vco2", "pllsrc", CLK_IGNORE_UNUSED, &stm32h7_pll2 },
+	{ "vco3", "pllsrc", CLK_IGNORE_UNUSED | CLK_IS_CRITICAL, &stm32h7_pll3 },
 };
 
 struct stm32_fractional_divider {
@@ -968,9 +968,9 @@ static const struct composite_clk_cfg stm32_odf[3][3] = {
 		M_ODF("pll2_r", "vco2", RCC_PLLCFGR, 21, RCC_PLL2DIVR, 24, 7),
 	},
 	{
-		M_ODF("pll3_p", "vco3", RCC_PLLCFGR, 22, RCC_PLL3DIVR,  9, 7),
-		M_ODF("pll3_q", "vco3", RCC_PLLCFGR, 23, RCC_PLL3DIVR, 16, 7),
-		M_ODF("pll3_r", "vco3", RCC_PLLCFGR, 24, RCC_PLL3DIVR, 24, 7),
+		M_ODF_F("pll3_p", "vco3", RCC_PLLCFGR, 22, RCC_PLL3DIVR,  9, 7, CLK_IGNORE_UNUSED | CLK_IS_CRITICAL),
+		M_ODF_F("pll3_q", "vco3", RCC_PLLCFGR, 23, RCC_PLL3DIVR, 16, 7, CLK_IGNORE_UNUSED | CLK_IS_CRITICAL),
+		M_ODF_F("pll3_r", "vco3", RCC_PLLCFGR, 24, RCC_PLL3DIVR, 24, 7, CLK_IGNORE_UNUSED | CLK_IS_CRITICAL),
 	}
 };
 
