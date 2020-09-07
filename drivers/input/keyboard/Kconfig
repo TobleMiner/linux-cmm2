@@ -791,4 +791,9 @@ config KEYBOARD_MTK_PMIC
 	  To compile this driver as a module, choose M here: the
 	  module will be called pmic-keys.
 
+config KEYBOARD_NUNCHUK
+	tristate "Nunchuk"
+	help
+	  Say Y here if you want to use Nintendo nunchuks
+
 endif
